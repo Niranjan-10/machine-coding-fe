@@ -7,6 +7,10 @@ import ProgressBarContainer from "../features/progressbar";
 import PhoneAuthentication from "../features/otp";
 import PasswordGenerator from "../features/password-generator";
 import CounterApp from "../features/polyfills/customUseMemo";
+import GridSequence from "../features/grid-sequence";
+import JobBoard from "../features/job-board";
+import LikedButton from "../features/like-button";
+import EmiCalculator from "../features/emi-calculator";
 
 
 export const router = createBrowserRouter([
@@ -41,5 +45,21 @@ export const router = createBrowserRouter([
     {
         path: 'custom-use-memo',
         element: <CounterApp/>
+    },
+    {
+        path: 'grid-sequence',
+        element: <GridSequence/>
+    },
+    {
+        path: 'job-board',
+        element: <JobBoard/>
+    },
+    {
+        path: 'like-button',
+        element: <LikedButton/>
+    },
+    {
+        path: 'emi-calculator',
+        element: <EmiCalculator/>
     }
 ])
