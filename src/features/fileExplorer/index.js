@@ -1,23 +1,27 @@
-import React from 'react'
-import explorer from './data'
-import ExplorerCard from './explorer-card'
-import useTraverseTree from './hooks/use-traverse-hook'
+import { useState } from "react";
+import useTraverseTree from "./hooks/use-traverse-hook"
+import Folder from "./components/folder";
+import explorer from "./data/data";
 
-const FileExplorer = (props) => {
+export default function FileExplorer() {
   const [explorerData, setExplorerData] = useState(explorer);
 
-  const { insertNode } = useTraverseTree();
+  const { insertNode, deleteNode } = useTraverseTree();
 
   const handleInsertNode = (folderId, item, isFolder) => {
-    const finalTree = insertNode(explorerData, folderId, item, isFolder);
-    setExplorerData(finalTree);
+    const updatedTree = insertNode(explorerData, folderId, item, isFolder)
+    // const finalTree = insertNode(explorerData, folderId, item, isFolder);
+    setExplorerData(updatedTree);
   };
 
-  return (
-    <div style={{backgroundColor: '#ccc'}}>
-        <ExplorerCard file={explorerData} handleInsertNode={handleInsertNode} />
-    </div>
-  )  
-}
+  const handleDeleteNode = (folderId) => {
+    const updatedTree = deleteNode(explorer, folderId)
+    setExplorerData(updatedTree);
+  }
 
-export default FileExplorer
+  return (
+    <div className="App">
+      <Folder handleInsertNode={handleInsertNode} explorer={explorerData} handleDeleteNode={handleDeleteNode} />
+    </div>
+  );
+}
