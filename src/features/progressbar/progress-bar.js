@@ -35,6 +35,9 @@ const ProgressBar = ({value, onComplete}) => {
       <div className='progress'>
         <span className='level'>{percent}</span>
         <div
+             aria-valuemin={0}
+             aria-valuemax={100}
+             aria-valuenow={percent}
             style={{
               transform: `scaleX(${percent/100})`,
               transformOrigin: 'left'

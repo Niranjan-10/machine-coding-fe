@@ -3,6 +3,89 @@ import { usePasswordGenerator } from "./hooks/use-password-hook";
 import Button from "./components/button";
 import Checkbox from "./components/checkbox";
 import PasswordStrengthIndicator from "./components/strength-checker";
+import styled from "@emotion/styled";
+
+const Container = styled.div`
+background-color: #24232b;
+padding: 24px;
+
+.header {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #2a8b8b;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.copyBtn {
+  height: 30px;
+  font-size: 10px;
+}
+
+.charlength {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 24px;
+}
+
+.charlength span {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+
+.checkboxes {
+  display: grid;
+  grid-template-columns: auto auto;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.checkboxes div {
+  display: flex;
+  gap: 5px;
+  padding-bottom: 25px;
+}
+
+.generateBtn {
+  width: 100%;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.errorMessage {
+  color: red;
+  padding-bottom: 5px;
+}
+
+.password-strength {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  color: white;
+}
+
+`
+
+
 
 const PasswordGenerator = () => {
   const [length, setLength] = useState(4);
@@ -32,7 +115,7 @@ const PasswordGenerator = () => {
   const { password, errorMessage, generatePassword } = usePasswordGenerator();
 
   return (
-    <div className="container">
+    <Container>
       {/* Password Text and Copy */}
       {password && (
         <div className="header">
@@ -81,7 +164,7 @@ const PasswordGenerator = () => {
         onClick={() => generatePassword(checkboxData, length)}
         customClass="generateBtn"
       />
-    </div>
+    </Container>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import useCustomMemo from './hooks/custom-use-memo'
+import useCustomEffect from './hooks/custom-use-effect'
 
 const CounterApp = () => {
     const [counter, setCounter] = useState(0)
@@ -9,6 +10,10 @@ const CounterApp = () => {
         console.log("Expensive calculation...")
         return counter*counter
     }
+
+    useCustomEffect(() => {
+      console.log("called")
+    }, [counter2])
 
   const memoisedSquaredValue = useCustomMemo(squaredValue, [counter]);
 
