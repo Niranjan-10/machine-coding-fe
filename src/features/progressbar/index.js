@@ -18,12 +18,12 @@ let Container = styled.div`
       position: relative;
     }
 
-    .progress-level {
-      background-color: #00c251;
-      color: #fff;
-      height: 100%;
-      text-align: center;
-    }
+    // .progress-level {
+    //   background-color: #00c251;
+    //   color: #fff;
+    //   height: 100%;
+    //   text-align: center;
+    // }
 
     .level {
       position: absolute;

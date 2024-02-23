@@ -4,11 +4,13 @@ import useHook from '../pagination/utils';
 const ProgressBar = ({value, onComplete}) => {
     const [percent, setPercent] = useState(20);
 
-    useEffect(()=> {
-      if(value) {
-        setPercent(Math.min(100, Math.max(0, value)))
-      }
-    }, [value])
+  useEffect(() => {
+    setPercent(Math.min(100, Math.max(0, value)))
+
+    if(value>=100) {
+      onComplete();
+    }
+  }, [value])
 
 
     // return (
@@ -38,10 +40,12 @@ const ProgressBar = ({value, onComplete}) => {
              aria-valuemin={0}
              aria-valuemax={100}
              aria-valuenow={percent}
-            style={{
+             style={{
               transform: `scaleX(${percent/100})`,
-              transformOrigin: 'left'
-            }}
+              transformOrigin: 'left',
+              backgroundColor: 'green',
+              height: "100%"
+             }}
             className='progress-level'>
         </div>
       </div>

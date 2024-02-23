@@ -11,6 +11,9 @@ import GridSequence from "../features/grid-sequence";
 import JobBoard from "../features/job-board";
 import LikedButton from "../features/like-button";
 import EmiCalculator from "../features/emi-calculator";
+import ContactList from "../features/cars24/contact-list";
+import ContactManager from "../features/cars24";
+import AddProgressBar from "../features/add-progressbar";
 
 
 export const router = createBrowserRouter([
@@ -23,7 +26,7 @@ export const router = createBrowserRouter([
         element: <InfinityScroll />
     },
     {
-        path: 'file',
+        path: 'file-explorer',
         element: <FileExplorer />
     },
     {
@@ -61,5 +64,14 @@ export const router = createBrowserRouter([
     {
         path: 'emi-calculator',
         element: <EmiCalculator/>
-    }
+    },
+    {
+        path: 'cars24',
+        element: <ContactManager />
+    },
+    {
+        path: 'add-progressbar',
+        element: <AddProgressBar />
+    },
+
 ])

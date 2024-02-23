@@ -85,8 +85,6 @@ button {
 
 `
 
-
-
 const PasswordGenerator = () => {
   const [length, setLength] = useState(4);
   const [copied, setCopied] = useState(false);

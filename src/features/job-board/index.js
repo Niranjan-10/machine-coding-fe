@@ -36,6 +36,7 @@ const JobBoard = () => {
   useEffect(() => {
     fetchItems();
   }, [page]);
+  
   console.log(items)
   return (
     <div className="custom-app">

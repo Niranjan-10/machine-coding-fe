@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   gap: 16px;
 
   .grid {
-    display: grid;
     max-width: 300px;
     width: 100%;
     padding: 20px;
@@ -53,17 +52,29 @@ const GridSequence = () => {
   const deActivatingCells = () => {
     setDeactivating(true);
     const timer = setInterval(() => {
-      setOrder((originalOrder) => {
-        const newOrder = [...originalOrder]
+      setOrder((prev) => {
+        const newOrder = [...prev]
         newOrder.pop();
 
-        if(newOrder.length === 0) {
-          clearInterval(timer);
+        if(newOrder.length === 0 ){
+          clearInterval(timer)
           setDeactivating(false)
         }
         return newOrder
       })
-    }, 400)
+    }, 300)
+    // const timer = setInterval(() => {
+    //   setOrder((originalOrder) => {
+    //     const newOrder = [...originalOrder]
+    //     newOrder.pop();
+
+    //     if(newOrder.length === 0) {
+    //       clearInterval(timer);
+    //       setDeactivating(false)
+    //     }
+    //     return newOrder
+    //   })
+    // }, 400)
   }
 
   const activateCells = (index) => {
@@ -73,12 +84,6 @@ const GridSequence = () => {
     if(newOrder.length === config.flat(1).filter(Boolean).length) {
       deActivatingCells();
     }
-    // const newOrder = [...order, index];
-    // setOrder(newOrder);
-
-    // if(newOrder.length === config.flat(1).filter((x) => x).length) {
-    //     deActivatingCells(index)
-    // }
   };
 
   return (
@@ -86,10 +91,22 @@ const GridSequence = () => {
       <div
         className="grid"
         style={{
-         gridTemplateColumns: "auto auto auto"
+          display: "grid",
+          gridTemplateColumns: "auto auto auto"
         }}
       >
         {config.flat(1).map((item, index) => {
+          return item? 
+            <Cell
+              key={index}
+              label={`Cell ${index}`}
+              isFilled={order.includes(index)}
+              isDisabled={order.includes(index) || isDeactvating}
+              onClick={() => activateCells(index)}
+            />
+          : <span/>
+        })}
+        {/* {config.flat(1).map((item, index) => {
           return item ?(
             <Cell
               key={index}
@@ -99,7 +116,7 @@ const GridSequence = () => {
               isDisabled={order.includes(index) || isDeactvating}
             />
           ) : <span/>;
-        })}
+        })} */}
       </div>
     </Wrapper>
   );
